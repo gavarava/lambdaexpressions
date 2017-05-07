@@ -4,11 +4,13 @@ import com.math.integrate.SimpsonsRule;
 
 public class MathIntegrationTester {
 
-	public static int RAMANUJAN_NUMBER = 1729;
 	public static void main(String[] args) {
+
+		int RAMANUJAN_NUMBER = 1729;
 		// Minst kode vi behövde före Java 1.8 för att göra det annars vi måste använder Adapter Pattern för att göra det
 		// Anonymous Class
-		DoubleFunction sineFunction = new DoubleFunction() {
+
+		@SuppressWarnings("This is an Example")	DoubleFunction sineFunction = new DoubleFunction() {
 
 			@Override
 			public double f(double x) {
@@ -35,6 +37,9 @@ public class MathIntegrationTester {
 
 		double integrationResult5 = SimpsonsRule.integrateV2(Math::cos, Math.PI, RAMANUJAN_NUMBER, 10);
 		System.out.println("Using a method reference to call Simpson.integrate 2 \n " + integrationResult5);
+
+		double integrationResult6 = SimpsonsRule.integrateV3(Math::cos, Math.PI, RAMANUJAN_NUMBER, 10);
+		System.out.println("Using the DoubleUnaryOperator \n " + integrationResult6);
 
 		// Vi hade började med många kode, men nu vi skriver bara en linje av kod
 	}
